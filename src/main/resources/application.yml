@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: m2-clean
+
+clean:
+  config:
+    m2Repository: /Users/songjm/.m2/repository
+    cleanInvalidRepository: true
+    cleanReleasedSnapshot: true
+    cleanExpiredSnapshot: true
+    snapshotExpiredDays: 30
+    ignorFiles:
+      - eclipse
+      - idea
