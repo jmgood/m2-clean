@@ -1,6 +1,7 @@
 package com.songjm.m2clean.handle;
 
 import com.songjm.m2clean.config.CleanConfig;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +23,7 @@ import java.util.List;
  * @CreateTime: 2019/8/6 09:44
  */
 @Component
+@Log4j2
 public class RepositoryHandle {
     
     // 无效目标列表
@@ -61,45 +63,45 @@ public class RepositoryHandle {
             checkValid(file);
         }
 
-        System.out.println("INVALID_REPOSITORY =====================" + INVALID_REPOSITORY.size());
+        log.info("INVALID_REPOSITORY ===================== {}", INVALID_REPOSITORY.size());
         if (!INVALID_REPOSITORY.isEmpty()) {
             INVALID_REPOSITORY.forEach(repositoryPath -> {
                 boolean deleteFlag = deleteFile(new File(repositoryPath));
                 if (deleteFlag) {
-                    System.out.println("Repository[" + repositoryPath + "] delete success");
+                    log.info("Repository[{}] delete success", repositoryPath);
                 } else {
-                    System.err.println("Repository[" + repositoryPath + "] delete failed");
+                    log.error("Repository[{}] delete failed", repositoryPath);
                 }
             });
 
         }
-        System.out.println("INVALID_REPOSITORY =====================");
+        log.info("INVALID_REPOSITORY =====================");
 
-        System.out.println("EXPIRED_SNAPSHOT_REPOSITORY =====================" + EXPIRED_SNAPSHOT_REPOSITORY.size());
+        log.info("EXPIRED_SNAPSHOT_REPOSITORY ===================== {}", EXPIRED_SNAPSHOT_REPOSITORY.size());
         if (!EXPIRED_SNAPSHOT_REPOSITORY.isEmpty()) {
             EXPIRED_SNAPSHOT_REPOSITORY.forEach(repositoryPath -> {
                 boolean deleteFlag = deleteFile(new File(repositoryPath));
                 if (deleteFlag) {
-                    System.out.println("Repository[" + repositoryPath + "] delete success");
+                    log.info("Repository[{}] delete success", repositoryPath);
                 } else {
-                    System.err.println("Repository[" + repositoryPath + "] delete failed");
+                    log.error("Repository[{}] delete failed", repositoryPath);
                 }
             });
         }
-        System.out.println("EXPIRED_SNAPSHOT_REPOSITORY =====================");
+        log.info("EXPIRED_SNAPSHOT_REPOSITORY =====================");
 
-        System.out.println("RELEASED_SNAPSHOT_REPOSITORY =====================" + RELEASED_SNAPSHOT_REPOSITORY.size());
+        log.info("RELEASED_SNAPSHOT_REPOSITORY ===================== {}", RELEASED_SNAPSHOT_REPOSITORY.size());
         if (!RELEASED_SNAPSHOT_REPOSITORY.isEmpty()) {
             RELEASED_SNAPSHOT_REPOSITORY.forEach(repositoryPath -> {
                 boolean deleteFlag = deleteFile(new File(repositoryPath));
                 if (deleteFlag) {
-                    System.out.println("Repository[" + repositoryPath + "] delete success");
+                    log.info("Repository[{}] delete success", repositoryPath);
                 } else {
-                    System.err.println("Repository[" + repositoryPath + "] delete failed");
+                    log.error("Repository[{}] delete failed", repositoryPath);
                 }
             });
         }
-        System.out.println("RELEASED_SNAPSHOT_REPOSITORY =====================");
+        log.info("RELEASED_SNAPSHOT_REPOSITORY =====================");
     }
 
     /*

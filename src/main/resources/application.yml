@@ -2,6 +2,9 @@ spring:
   application:
     name: m2-clean
 
+logging:
+  config: classpath:log4j2.yml
+
 clean:
   config:
     m2Repository: /Users/songjm/.m2/repository
