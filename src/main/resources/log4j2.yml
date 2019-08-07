@@ -74,3 +74,10 @@ Configuration:
       AppenderRef:
       - ref: ROLLING_FILE
       - ref: ERROR_ROLLING_FILE
+    - name: com.songjm.m2clean.M2CleanApplication
+      level: info
+      additivity: false
+      AppenderRef:
+      - ref: CONSOLE
+      - ref: ROLLING_FILE
+      - ref: ERROR_ROLLING_FILE
